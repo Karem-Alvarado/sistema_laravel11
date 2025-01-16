@@ -143,12 +143,12 @@
                                     </button>
                                 </span>
                             </template>
-
                             <template #content>
                                 <div class="block px-4 py-2 text-xs text-gray-400">
                                     Administrar cuenta
                                 </div>
                                 <!-- <DropdownLink :href="route('profile.show')">Perfil</DropdownLink> -->
+                                <DropdownLink :href="route('profile.show')">Perfil</DropdownLink>
                                 <DropdownLink as="button" @click="logout">Salir</DropdownLink>
                                 <!-- <form @submit.prevent="logout">
                                     <DropdownLink as="button">Salir</DropdownLink>

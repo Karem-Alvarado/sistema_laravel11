@@ -15,6 +15,7 @@ defineProps({
 
 const form = useForm({
     email: '',
+    username: '',
     password: '',
     remember: false,
 });
@@ -43,21 +44,32 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
+                <!-- username  -->
+                <div class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="text-indigo-500 w-5 h-5">
+                        <path d="M12 2a6 6 0 110 12 6 6 0 010-12zm0 14c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z" />
+                    </svg>
+                    <InputLabel for="username" value="Email o username" />
+                </div>
                 <TextInput
-                    id="email"
-                    v-model="form.email"
-                    type="email"
+                    id="username"
+                    v-model="form.username"
+                    type="text"
                     class="mt-1 block w-full"
                     required
                     autofocus
                     autocomplete="username"
                 />
-                <InputError class="mt-2" :message="form.errors.email" />
+                <InputError class="mt-2" :message="form.errors.username" />
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <div class="flex">
+                    <svg mlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="text-indigo-500 w-5 h-5">
+                        <path fill-rule="evenodd" d="M12 2a5 5 0 00-5 5v4H6a3 3 0 00-3 3v6a3 3 0 003 3h12a3 3 0 003-3v-6a3 3 0 00-3-3h-1V7a5 5 0 00-5-5zm3 9V7a3 3 0 10-6 0v4h6zm-6 6a1 1 0 112 0 1 1 0 01-2 0z" clip-rule="evenodd" />
+                    </svg>
+                    <InputLabel for="password" value="Contraseña" />
+                </div>
                 <TextInput
                     id="password"
                     v-model="form.password"
@@ -69,20 +81,10 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <Checkbox v-model:checked="form.remember" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600">Remember me</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Forgot your password?
-                </Link>
-
+        
+            <div class="flex items-center justify-center mt-4">
                 <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
+                    Ingresar
                 </PrimaryButton>
             </div>
         </form>
